@@ -7,7 +7,7 @@ const Poems = () => {
   React.useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/poems`)
       .then((res) => res.json())
-      .then((data) => setData(data))
+      .then((data) => setData(Array.isArray(data) ? data : []))
       .catch((err) => console.error("Error fetching poems:", err));
   }, []);
   return (
